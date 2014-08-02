@@ -141,6 +141,7 @@ function doSimulation()
 			//if (!tmp_plane) tmp_to.css("visibility", "hidden");
 			temp.animate(to.offset(), moveMan.ANIMATION_TIME, function() {
 				tmp_to.css("visibility", "visible");
+				temp.stop(true);
 				temp.remove();
 			});
 		})();
@@ -191,13 +192,13 @@ function doSimulation()
 				}
 			}
 		}
-		/*
-		if ($(":animated").length != 0)
-			clearInterval(serviceLoop);
-		$(":animated").promise().done(function() {
-    		serviceLoop = setInterval(serviceQueue, LOOP_POLL_MS);
-		});
-		*/
+		if ($(":animated").length > 0)
+		{
+			window.clearInterval(serviceLoop);
+			$(":animated").promise().done(function() {
+ 				serviceLoop = window.setInterval(serviceQueue, LOOP_POLL_MS);
+			});
+		}
 	}
 	
 	function assignAgent(man)
