@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <title>JSEventQueue.html</title>
+        <p><link rel="stylesheet" type="text/css" href="simulation.css" /></p>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js">// <![CDATA[
+            
+            // ]]></script>
+        <script type="text/javascript" src="JSBinaryHeap.js">// <![CDATA[
+            
+            // ]]></script>
+        <script type="text/javascript" src="JSEventQueue.js">// <![CDATA[
+            
+            // ]]></script>
+        
+        <div id="container">
+            <h2>Airline Ticket Counter Simulation</h2>
+            <h4>with stick figures!</h4>
+            <div class="centerize">
+                 <button id="startSimulation" type="button" onclick="doSimulation();">Start</button>
+            </div>
+           
+            <table class="counters">
+                <tbody>
+                    <tr><th>Free Ticket Agents</th><th>Waiting Customers</th><th>Remaining Events</th></tr>
+                    <tr id="counters">
+                        <td id="agents">0</td>
+                        <td id="waiting">0</td>
+                        <td id="remaining">0</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Average customer wait time:</h2>
+            <h2 id="seconds">0.00 minutes</h2>
+            <table class="graphics">
+                <tbody>
+                    <tr>
+                        <td id="planedata"><image id="plane" src="plane.png"></td>
+                        <td>
+                            <table>
+                                <tbody>
+                                        <tr><td><image class="counter" src="counter.png"></td>
+                                            <td><image class="manatcounter" src="man.png"></td>
+                                        </tr>
+                                        <tr><td><image class="counter" src="counter.png"></td>
+                                            <td><image class="manatcounter" src="man.png"></td>
+                                        </tr>
+                                        <tr><td><image class="counter" src="counter.png"></td>
+                                            <td><image class="manatcounter" src="man.png"></td>
+                                        </tr>
+                                        <tr><td><image class="counter" src="counter.png"></td>
+                                            <td><image class="manatcounter" src="man.png"></td>
+                                        </tr>
+                                        <tr><td><image class="counter" src="counter.png"></td>
+                                            <td><image class="manatcounter" src="man.png"></td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                        <td><image class="waitingman" src="man.png"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                        <td><image class="pendingman" src="man.png"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="bottom">
+                <p>50 random customer arrival events over 60 minutes are used for the simulation, with an agent taking 3.1 minutes to handle a customer.</p>
+            </div>
+        </div>
+    </body>
+</html>

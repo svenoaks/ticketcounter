@@ -1,0 +1,103 @@
+@font-face {
+    font-family:yearsold;
+    src: url(5yearsoldfont.ttf);
+}
+body
+{
+	text-align:center;
+	font-family:yearsold;
+	font-size:1.2em;
+	background:#003399;
+}
+#startSimulation
+{
+	height:100px;
+	width:300px;
+	font-size:4em;
+	font-family:yearsold;
+	background:#679b08;
+	
+}
+.centerize
+{
+	height:100px;
+	display:block;
+	margin-bottom:20px;
+}
+table.counters
+{
+	table-layout:fixed;
+	border-spacing:10px;
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+}
+table.graphics
+{
+	margin-left:auto;
+	margin-right:auto;
+	border-spacing:40px 10px;
+}
+table.counters td
+{
+}
+.waitingman
+{
+	width:30px;
+	visibility:hidden;
+}
+.manatcounter
+{
+	width:30px;
+	visibility:hidden;
+	
+}
+.pendingman
+{
+	width:30px;
+	opacity:0.0;
+}
+.counter
+{
+	height:60px;
+	opacity:0.0;
+	
+}
+#plane
+{
+	height:300px;
+	position:relative;
+	opacity:0.0;
+}
+#counters td
+{
+	font-size:4em;
+	text-align:center;
+	border:solid black 2px;
+	padding:15px;
+}
+h2, h4
+{
+	text-align:center;
+}
+#container
+{
+	padding:20px;
+	width:1500px;
+	margin-left:auto;
+	margin-right:auto;
+	z-index:1;
+	background:white;
+	border:solid black 4px;
+}
+p
+{
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	width: 450px;
+}
+#bottom
+{
+	text-align:center;
+}
